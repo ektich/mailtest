@@ -3,7 +3,11 @@ import asyncore, collections, email, json, smtpd, sys, threading, time
 from wsgiref.simple_server import make_server, WSGIRequestHandler, WSGIServer
 import bottle
 
-__version__ = '1.1.3'
+try:
+    VERSION = __import__('pkg_resources') \
+        .get_distribution('mailtest').version
+except Exception as e:
+    VERSION = 'unknown'
 
 
 try:

@@ -2,6 +2,8 @@ import os
 
 from setuptools import setup
 
+VERSION = '1.1.3'
+
 def long_description():
   os.system('pandoc --from=markdown --to=rst --output=README.rst README.md')
   readme_fn = os.path.join(os.path.dirname(__file__), 'README.rst')
@@ -13,13 +15,16 @@ def long_description():
 
 setup(
   name='mailtest',
-  version=__import__('mailtest').__version__,
+  version=VERSION,
   description="A unit testing tool for code that sends email.",
   long_description=long_description(),
   author='Derek Anderson',
   author_email='public@kered.org',
   url='https://github.com/keredson/mailtest',
   packages=[],
+  install_requires=[
+    'bottle'
+    ],
   py_modules=['mailtest'],
   classifiers=[
     'Development Status :: 4 - Beta',
